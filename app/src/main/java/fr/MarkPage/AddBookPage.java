@@ -1,7 +1,7 @@
 package fr.MarkPage;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -55,6 +55,8 @@ public class AddBookPage extends AppCompatActivity {
         String author = authorEditText.getText().toString().trim();
         String currentPageString = currentPageEditText.getText().toString().trim();
         String totalPageString = totalPageEditText.getText().toString().trim();
+        int currentPage = Integer.parseInt(currentPageString);
+        int totalPage = Integer.parseInt(totalPageString);
 
         // Vérification des champs
         if (title.isEmpty() || author.isEmpty() || currentPageString.isEmpty() || totalPageString.isEmpty()) {
@@ -62,8 +64,11 @@ public class AddBookPage extends AppCompatActivity {
             return;
         }
 
-        int currentPage = Integer.parseInt(currentPageString);
-        int totalPage = Integer.parseInt(totalPageString);
+        // Vérification des pages
+        if (currentPage > totalPage) {
+            Toast.makeText(this, "Current page can't be greater than total page", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Book newBook = new Book(title, author, currentPage, totalPage);
         long result = databaseHelper.addBook(newBook);

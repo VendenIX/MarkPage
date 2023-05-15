@@ -1,6 +1,7 @@
 package fr.MarkPage;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,13 @@ public class BookListAdapter extends ArrayAdapter<Book> {
             if(progress != null) {
                 progress.setMax(book.getTotalPages());
                 progress.setProgress(book.getCurrentPage());
+            }
+
+            // Changer la couleur de fond en fonction de la position
+            if (position % 2 == 0) {
+                v.setBackgroundColor(Color.rgb(242,197,124));
+            } else {
+                v.setBackgroundColor(Color.rgb(221,174,126));
             }
         }
         return v;
