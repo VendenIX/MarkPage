@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/book_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/colorItem"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/book_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:backgroundTint="@color/black"
+        android:textStyle="bold"
+        android:autofillHints="Titre du livre"/>
+
+
+    <EditText
+        android:id="@+id/book_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:autofillHints="Autheur du livre"
+        />
+
+    <SeekBar
+        android:id="@+id/book_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:progressTint="@color/black"
+        android:indeterminate="false"/>
+
+    <TextView
+        android:id="@+id/progress_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/book_progress_update"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonUpdateBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mettre à jour"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/buttonDeleteBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Supprimer"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
