@@ -1,5 +1,6 @@
 package fr.MarkPage;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class UpdateBookPage extends AppCompatActivity {
@@ -19,6 +21,29 @@ public class UpdateBookPage extends AppCompatActivity {
     Button updateButton;
     Button deleteButton;
     Book currentBook;
+
+
+    private void showDeleteConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Êtes-vous sûr de vouloir supprimer ce livre ?");
+        builder.setPositiveButton("Supprimer", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // Supprimer le livre
+                dbHelper.deleteBook(currentBook);
+                Toast.makeText(UpdateBookPage.this, "Book deleted", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+        builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // Annuler la suppression
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,11 +127,11 @@ public class UpdateBookPage extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHelper.deleteBook(currentBook);
-                Toast.makeText(UpdateBookPage.this, "Book deleted", Toast.LENGTH_SHORT).show();
-                finish();
+                showDeleteConfirmationDialog();
             }
         });
 
     }
+
+
 }
