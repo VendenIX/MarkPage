@@ -31,7 +31,6 @@
 
         <activity android:name=".AddBookPage" />
         <activity android:name=".BookPage" />
-        <activity android:name=".UpdateBookPage" />
     </application>
 
 </manifest>

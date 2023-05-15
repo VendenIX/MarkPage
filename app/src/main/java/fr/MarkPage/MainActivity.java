@@ -1,10 +1,7 @@
 package fr.MarkPage;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,28 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
-import fr.MarkPage.Book;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Book selectedBook = bookList.get(i);
-                Intent intent = new Intent(MainActivity.this, UpdateBookPage.class);
+                Intent intent = new Intent(MainActivity.this, BookPage.class);
 
                 // Add the selected book as an extra to the intent
                 intent.putExtra("selectedBook", selectedBook);
