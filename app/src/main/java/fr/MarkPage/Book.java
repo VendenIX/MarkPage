@@ -1,6 +1,7 @@
 package fr.MarkPage;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public class Book implements Serializable {
     private String title;
@@ -8,6 +9,7 @@ public class Book implements Serializable {
     private String author;
     private int currentPage;
     private int totalPages;
+    private Map<String, String> vocabulary;
 
     public Book(int id, String title, String author, int currentPage, int totalPages) {
         this.title = title;
@@ -81,6 +83,14 @@ public class Book implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Map<String, String> getVocabulary() {
+        return vocabulary;
+    }
+
+    public void setVocabulary(Map<String, String> vocabulary) {
+        this.vocabulary = vocabulary;
     }
 
 }

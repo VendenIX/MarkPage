@@ -1,4 +1,5 @@
 package fr.MarkPage;
+
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +12,8 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.MarkPage.Book;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "book_database";
@@ -22,6 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_AUTHOR = "author";
     private static final String COLUMN_CURRENT_PAGE = "current_page";
     private static final String COLUMN_TOTAL_PAGES = "total_pages";
+    private static final String COLUMN_VOCABULARY = "vocabulary";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,7 +38,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_TITLE + " TEXT," +
                 COLUMN_AUTHOR + " TEXT," +
                 COLUMN_CURRENT_PAGE + " INTEGER," +
-                COLUMN_TOTAL_PAGES + " INTEGER" +
+                COLUMN_TOTAL_PAGES + " INTEGER," +
+                COLUMN_VOCABULARY + " TEXT" +
                 ")";
         db.execSQL(CREATE_BOOKS_TABLE);
     }
@@ -54,10 +59,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_AUTHOR, book.getAuthor());
         values.put(COLUMN_CURRENT_PAGE, book.getCurrentPage());
         values.put(COLUMN_TOTAL_PAGES, book.getTotalPages());
+        values.put(COLUMN_VOCABULARY, ""); // Initial value for vocabulary
 
-        db.insert(TABLE_BOOKS, null, values);
+        long id = db.insert(TABLE_BOOKS, null, values);
         db.close();
-        return 0;
+        return id;
     }
 
     @SuppressLint("Range")
@@ -100,12 +106,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.update(TABLE_BOOKS, values, COLUMN_ID + " = ?",
                 new String[]{String.valueOf(book.getId())});
         db.close();
-    }
-
+}
     public void deleteBook(Book book) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_BOOKS, COLUMN_ID + " = ?",
                 new String[]{String.valueOf(book.getId())});
         db.close();
+    }
+
+    public void updateVocabulary(Book book, String vocabularyJson) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_VOCABULARY, vocabularyJson);
+
+        db.update(TABLE_BOOKS, values, COLUMN_ID + " = ?",
+                new String[]{String.valueOf(book.getId())});
+        db.close();
+    }
+
+    @SuppressLint("Range")
+    public String getVocabulary(Book book) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_BOOKS, new String[]{COLUMN_VOCABULARY},
+                COLUMN_ID + " = ?", new String[]{String.valueOf(book.getId())},
+                null, null, null);
+
+        String vocabularyJson = "";
+
+        if (cursor.moveToFirst()) {
+            vocabularyJson = cursor.getString(cursor.getColumnIndex(COLUMN_VOCABULARY));
+        }
+
+        cursor.close();
+        db.close();
+
+        return vocabularyJson;
     }
 }
