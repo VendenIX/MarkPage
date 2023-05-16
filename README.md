@@ -8,14 +8,15 @@ Pour le moment j'ai réalisé la liste des livres, la progress bar, la page d'aj
 Éléments que je vais bientôt ajouter:
 - Le fait de pouvoir ajouter une liste de mots de vocabulaires afin de pouvoir consulter son propre dictionnaire des mots pour chaque livre donc je vais devoir ajouter une nouvelle colonne a la base de données
 - Un bouton assez discret permettant de trier les éléments de la liste selon leur progression, leur nombre de pages, l'auteur
-- Faire en sorte que la liste ait une couleur qui change une fois sur deux 
+- ~~Faire en sorte que la liste ait une couleur qui change une fois sur deux~~
 - Ajouter des paramètres pour changer la langue entre Anglais/Francais/Chinois/Espagnol/Allemand/Italien/Japonais
 - Ajouter un paramètre pour donner différents themes a l'application : Sombre, Clair, Defaut (Orange) , Personnalisé et genre le personnalisé donnerait un Coler Picker RGB pour mettre la couleur que l'on veut , et on aurait donc 3 couleurs principales:
 on aurait les textes, le fond de l'appli, le fond des widgets 
 - Ajouter une barre de recherche qui serait caché dans un menu humburger, qui permettrait de rechercher dans la liste avec une barre de recherche 
-- Faudrait essayer également de voir comment implémenter de la publicité pour ma prochaine application 
+- Faudrait essayer également de voir comment implémenter de la publicité pour ma prochaine application, je le ferais avec Google AdMob
 - Le fait du pouvoir exporter ses données au format data.json et genre comme ça on peut transférer les données sur un autre téléphone
-
+- Séparation en 3 navigations : gauche: liste, milieu: favoris, droite : bibliothèque celle par defaut sera celle de gauche 
+- Pour le vocabulaire on va devoir créer un fragment
 
 Idées futures mais pas nécéssaires: 
 Faire des comptes utilisateurs et connecter l'application pour quelle propose des livres du même auteur ou du même theme qu'un livre que l'on aime bien, mais faudrait voir avec quelle API je fais cela.
