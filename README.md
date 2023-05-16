@@ -15,7 +15,8 @@ on aurait les textes, le fond de l'appli, le fond des widgets
 - Ajouter une barre de recherche qui serait caché dans un menu humburger, qui permettrait de rechercher dans la liste avec une barre de recherche 
 - Faudrait essayer également de voir comment implémenter de la publicité pour ma prochaine application, je le ferais avec Google AdMob
 - Le fait du pouvoir exporter ses données au format data.json et genre comme ça on peut transférer les données sur un autre téléphone
-
+- Séparation en 3 navigations : gauche: liste, milieu: favoris, droite : bibliothèque celle par defaut sera celle de gauche 
+- Pour le vocabulaire on va devoir créer un fragment
 
 Idées futures mais pas nécéssaires: 
 Faire des comptes utilisateurs et connecter l'application pour quelle propose des livres du même auteur ou du même theme qu'un livre que l'on aime bien, mais faudrait voir avec quelle API je fais cela.
