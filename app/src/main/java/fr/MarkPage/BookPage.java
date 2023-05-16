@@ -2,6 +2,7 @@ package fr.MarkPage;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,5 +37,9 @@ public class BookPage extends AppCompatActivity {
         FragmentTransaction fragmentTransaction3 = fragmentManager.beginTransaction();
         fragmentTransaction3.replace(R.id.addVocabularyFragmentContainer, new AddVocabularyFragment());
         fragmentTransaction3.commit();
+
+        Book currentBook = (Book) getIntent().getSerializableExtra("selectedBook");
+        Toast.makeText(this, "vocabulary: " + currentBook.printVocabulary(), Toast.LENGTH_SHORT).show();
+
     }
 }

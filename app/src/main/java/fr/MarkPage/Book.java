@@ -1,6 +1,7 @@
 package fr.MarkPage;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Book implements Serializable {
@@ -17,6 +18,7 @@ public class Book implements Serializable {
         this.author = author;
         this.currentPage = currentPage;
         this.totalPages = totalPages;
+        this.vocabulary = new HashMap<>();
     }
 
     public Book(String title, String author, int totalPages) {
@@ -24,6 +26,7 @@ public class Book implements Serializable {
         this.author = author;
         this.currentPage = 1;
         this.totalPages = totalPages;
+        this.vocabulary = new HashMap<>();
     }
 
     public Book(String title, String author, int totalPages, int currentPage) {
@@ -31,6 +34,7 @@ public class Book implements Serializable {
         this.author = author;
         this.currentPage = currentPage;
         this.totalPages = totalPages;
+        this.vocabulary = new HashMap<>();
     }
 
     public Book() {
@@ -38,6 +42,7 @@ public class Book implements Serializable {
         this.author = "";
         this.currentPage = 1;
         this.totalPages = 1;
+        this.vocabulary = new HashMap<>();
     }
 
     public String getTitle() {
@@ -91,6 +96,18 @@ public class Book implements Serializable {
 
     public void setVocabulary(Map<String, String> vocabulary) {
         this.vocabulary = vocabulary;
+    }
+
+    public String printVocabulary() {
+        String result = "";
+        for (Map.Entry<String, String> entry : vocabulary.entrySet()) {
+            result += entry.getKey() + " : " + entry.getValue() + "\n";
+        }
+
+        if(result == "") {
+            result = "No vocabulary yet";
+        }
+        return result;
     }
 
 }
