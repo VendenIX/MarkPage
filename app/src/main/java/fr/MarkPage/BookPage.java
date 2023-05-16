@@ -26,5 +26,15 @@ public class BookPage extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, new BookItemUpdateFragment());
         fragmentTransaction.commit();
+
+        // Charger le fragment VocabularyListFragment
+        FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
+        fragmentTransaction2.replace(R.id.vocabularyFragmentContainer, new VocabularyListFragment());
+        fragmentTransaction2.commit();
+
+        // Charger le fragment AddVocabularyFragment
+        FragmentTransaction fragmentTransaction3 = fragmentManager.beginTransaction();
+        fragmentTransaction3.replace(R.id.addVocabularyFragmentContainer, new AddVocabularyFragment());
+        fragmentTransaction3.commit();
     }
 }

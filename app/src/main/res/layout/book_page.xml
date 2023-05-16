@@ -8,4 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!-- Placeholder pour le fragment liste vocabulaire -->
+    <FrameLayout
+        android:id="@+id/vocabularyFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/addVocabularyFragmentContainer"
+        android:layout_below="@+id/fragmentContainer" />
+
+    <!-- Placeholder pour le fragment ajouter vocabulaire -->
+    <FrameLayout
+        android:id="@+id/addVocabularyFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>
