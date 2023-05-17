@@ -23,4 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
+    <TextView
+        android:id="@+id/textViewVocabulary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
 </RelativeLayout>

@@ -1,5 +1,7 @@
 package fr.MarkPage;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -95,7 +97,10 @@ public class Book implements Serializable {
     }
 
     public void setVocabulary(Map<String, String> vocabulary) {
-        this.vocabulary = vocabulary;
+
+        if(vocabulary != null) {
+            this.vocabulary = vocabulary;
+        }
     }
 
     public String printVocabulary() {
@@ -108,6 +113,19 @@ public class Book implements Serializable {
             result = "No vocabulary yet";
         }
         return result;
+    }
+
+    public String getVocabularyJson() {
+        // Utiliser une bibliothèque de sérialisation JSON comme Gson pour convertir la Map en JSON
+        Gson gson = new Gson();
+        return gson.toJson(vocabulary);
+    }
+
+    public void addVocabulary(String word, String definition) {
+        if( vocabulary == null) {
+            vocabulary = new HashMap<>();
+        }
+        vocabulary.put(word, definition);
     }
 
 }

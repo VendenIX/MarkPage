@@ -54,12 +54,25 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, BookPage.class);
 
                 // Add the selected book as an extra to the intent
-                intent.putExtra("selectedBook", selectedBook);
+                intent.putExtra("selectedBookId", selectedBook.getId());
 
                 // Start the activity
                 startActivity(intent);
             }
         });
+
+        listViewBooks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Book selectedBook = bookList.get(i);
+                int selectedBookId = selectedBook.getId(); // Récupérez l'ID du livre sélectionné
+
+                Intent intent = new Intent(MainActivity.this, BookPage.class);
+                intent.putExtra("selectedBookId", selectedBookId); // Ajoutez l'ID du livre comme extra à l'intention
+                startActivity(intent);
+            }
+        });
+
 
         buttonAddBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "New book added successfully", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     @Override
     protected void onPause() {

@@ -60,8 +60,21 @@ public class BookItemUpdateFragment extends Fragment {
         deleteButton = rootView.findViewById(R.id.buttonDeleteBook);
         dbHelper = new DatabaseHelper(requireContext());
 
-        // Obtenez le livre actuel en utilisant l'intention qui a lancé cette activité
-        currentBook = (Book) requireActivity().getIntent().getSerializableExtra("selectedBook");
+        // Récupérer l'ID du livre sélectionné de l'intention
+        int currentBookId = requireActivity().getIntent().getIntExtra("selectedBookId", -1);
+        if (currentBookId == -1) {
+            // Gérer le cas où l'ID du livre n'est pas disponible
+            Toast.makeText(requireContext(), "No book ID found", Toast.LENGTH_SHORT).show();
+            return rootView;
+        }
+
+        // Récupérer le livre à partir de la base de données
+        currentBook = dbHelper.getBook(currentBookId);
+        if (currentBook == null) {
+            // Gérer le cas où le livre n'est pas trouvé dans la base de données
+            Toast.makeText(requireContext(), "Book not found in database", Toast.LENGTH_SHORT).show();
+            return rootView;
+        }
 
         // Mettez à jour les vues avec les informations du livre
         titleTextView.setText(currentBook.getTitle());
@@ -121,6 +134,8 @@ public class BookItemUpdateFragment extends Fragment {
 
         return rootView;
     }
+
+    public Book getCurrentBook() {
+        return currentBook;
+    }
 }
-
-

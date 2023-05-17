@@ -6,6 +6,7 @@
     <ListView
         android:id="@+id/listViewVocabulary"
         android:layout_width="match_parent"
+        android:background="#A60E0E"
         android:layout_height="match_parent" />
 
 </LinearLayout>

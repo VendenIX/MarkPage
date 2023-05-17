@@ -30,7 +30,15 @@
         </activity>
 
         <activity android:name=".AddBookPage" />
-        <activity android:name=".BookPage" />
+        <activity android:name=".BookPage">
+            <!-- Intent filters, si nécessaire -->
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+
     </application>
 
 </manifest>
